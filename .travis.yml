@@ -1,22 +1,18 @@
 language: php
 
 php:
-  - 5.4
-  - 5.5
   - 5.6
   - 7
 
 env:
   global:
     - DEFAULT=1
+    - CODECOV_TOKEN=f92e54c5-e70c-45ad-9f7d-0a4eb9414bdb
 
 matrix:
   fast_finish: true
 
   include:
-    - php: 7.0
-      env: PHPCS=1 DEFAULT=0
-
     - php: 7.0
       env: CODECOVERAGE=1 DEFAULT=0
 
@@ -40,6 +36,7 @@ script:
   - sh -c "if [ '$CODECOVERAGE' = '1' ]; then vendor/bin/phpunit --coverage-clover=clover.xml; fi"
   - sh -c "if [ '$CODECOVERAGE' = '1' ]; then wget -O codecov.sh https://codecov.io/bash; fi"
   - sh -c "if [ '$CODECOVERAGE' = '1' ]; then bash codecov.sh; fi"
-
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 notifications:
   email: false

@@ -28,5 +28,7 @@
             <directory suffix=".ctp">./tests/</directory>
         </blacklist>
     </filter>
-
+    <logging>
+        <log type="coverage-clover" target="clover.xml"/>
+    </logging>
 </phpunit>
