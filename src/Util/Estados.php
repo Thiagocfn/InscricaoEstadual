@@ -34,7 +34,7 @@ class Estados
     /**
      * Bahia
      */
-    const BA = "AC";
+    const BA = "BA";
 
     /**
      * Ceará

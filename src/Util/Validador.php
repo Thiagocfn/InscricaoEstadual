@@ -14,6 +14,7 @@ use Thiagocfn\InscricaoEstadual\Util\Validador\Acre;
 use Thiagocfn\InscricaoEstadual\Util\Validador\Alagoas;
 use Thiagocfn\InscricaoEstadual\Util\Validador\Amapa;
 use Thiagocfn\InscricaoEstadual\Util\Validador\Amazonas;
+use Thiagocfn\InscricaoEstadual\Util\Validador\Bahia;
 
 class Validador
 {
@@ -39,6 +40,9 @@ class Validador
                 break;
             case Estados::AM:
                 $valid = Amazonas::check($inscricao_estadual);
+                break;
+            case Estados::BA:
+                $valid = Bahia::check($inscricao_estadual);
                 break;
             default:
                 $valid = false;

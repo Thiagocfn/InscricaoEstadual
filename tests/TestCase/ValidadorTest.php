@@ -2,6 +2,7 @@
 namespace Thiagocfn\InscricaoEstadual\Test\TestCase;
 
 use PHPUnit\Framework\TestCase;
+use Thiagocfn\InscricaoEstadual\Util\Estados;
 use Thiagocfn\InscricaoEstadual\Util\Validador;
 
 class ValidadorTest extends TestCase
@@ -23,7 +24,7 @@ class ValidadorTest extends TestCase
 
     public function testAlagoasFalse()
     {
-        self::assertFalse(Validador::check("AL", "0187634580933"));
+        self::assertFalse(Validador::check("AL", "248659759"));
     }
 
     public function testAmapa()
@@ -33,7 +34,7 @@ class ValidadorTest extends TestCase
 
     public function testAmapaFalse()
     {
-        self::assertFalse(Validador::check("AP", "0187634580933"));
+        self::assertFalse(Validador::check("AP", "036029573"));
     }
 
     public function testAmazonas()
@@ -43,7 +44,39 @@ class ValidadorTest extends TestCase
 
     public function testAmazonasFalse()
     {
-        self::assertFalse(Validador::check("AM", "0187634580933"));
+        self::assertFalse(Validador::check("AM", "036029573"));
     }
+
+    public function testBahia()
+    {
+        // 8 dígitos
+        //// mod 10
+        self::assertTrue(Validador::check(Estados::BA, "12345663"), "Bahia. 8 digitos, mod 10 falhou");
+        //// mod 11
+        self::assertTrue(Validador::check(Estados::BA, "74219145"), "Bahia. 8 digitos, mod 11 falhou");
+
+        // 9 dígitos
+        //// mod 10
+        self::assertTrue(Validador::check(Estados::BA, "038343081"), "Bahia. 9 digitos, mod 10 falhou");
+        self::assertTrue(Validador::check(Estados::BA, "100000306"), "Bahia. 9 digitos, mod 10 falhou");
+        //// mod 11
+        self::assertTrue(Validador::check(Estados::BA, "778514741"), "Bahia. 9 digitos, mod 11 falhou");
+    }
+
+    public function testBahiaFalse()
+    {
+        // 8 dígitos
+        //// mod 10
+        self::assertFalse(Validador::check("BA", "12345636"));
+        //// mod 11
+        self::assertFalse(Validador::check("BA", "74219154"));
+
+        // 9 dígitos
+        //// mod 10
+        self::assertFalse(Validador::check("BA", "038343001"));
+        //// mod 11
+        self::assertFalse(Validador::check("BA", "778514731"));
+    }
+
 
 }
