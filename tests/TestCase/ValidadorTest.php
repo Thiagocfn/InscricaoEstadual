@@ -67,15 +67,25 @@ class ValidadorTest extends TestCase
     {
         // 8 dígitos
         //// mod 10
-        self::assertFalse(Validador::check("BA", "12345636"));
+        self::assertFalse(Validador::check(Estados::BA, "12345636"));
         //// mod 11
-        self::assertFalse(Validador::check("BA", "74219154"));
+        self::assertFalse(Validador::check(Estados::BA, "74219154"));
 
         // 9 dígitos
         //// mod 10
-        self::assertFalse(Validador::check("BA", "038343001"));
+        self::assertFalse(Validador::check(Estados::BA, "038343001"));
         //// mod 11
-        self::assertFalse(Validador::check("BA", "778514731"));
+        self::assertFalse(Validador::check(Estados::BA, "778514731"));
+    }
+
+    public function testCeara()
+    {
+        self::assertTrue(Validador::check(Estados::CE, "853511942"));
+    }
+
+    public function testCearaFalse()
+    {
+        self::assertFalse(Validador::check(Estados::CE, "853511943"));
     }
 
 
