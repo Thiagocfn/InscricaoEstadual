@@ -36,7 +36,7 @@ class Ceara implements ValidadorInteface
      * @param $inscricao_estadual string inscricao estadual
      * @return bool true caso o digito seja verificado, false caso contrário.
      */
-    private static function calculaDigito($inscricao_estadual)
+    protected static function calculaDigito($inscricao_estadual)
     {
         $peso = 9;
         $posicao = 8;

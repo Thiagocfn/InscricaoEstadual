@@ -17,6 +17,7 @@ use Thiagocfn\InscricaoEstadual\Util\Validador\Amazonas;
 use Thiagocfn\InscricaoEstadual\Util\Validador\Bahia;
 use Thiagocfn\InscricaoEstadual\Util\Validador\Ceara;
 use Thiagocfn\InscricaoEstadual\Util\Validador\DistritoFederal;
+use Thiagocfn\InscricaoEstadual\Util\Validador\EspiritoSanto;
 
 class Validador
 {
@@ -51,6 +52,9 @@ class Validador
                 break;
             case Estados::DF:
                 $valid = DistritoFederal::check($inscricao_estadual);
+                break;
+            case Estados::ES:
+                $valid = EspiritoSanto::check($inscricao_estadual);
                 break;
             default:
                 $valid = false;

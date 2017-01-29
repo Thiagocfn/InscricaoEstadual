@@ -13,8 +13,9 @@ Atenção!! Incompleto.
 
 ## Observações
 
-Acredito que todas as IE do estado do Amapá sejam válidas pelas regras de validação 
+* Acredito que todas as IE do estado do Amapá sejam válidas pelas regras de validação 
 do estado do Amazonas
+* A regra de validação do Ceará é a mesma do Espirito Santo
 
 ## Links úteis
 * Gerador de Inscrições estaduais - [http://www.geradoruniversal.com/gerador-de-inscricao-estadual](http://www.geradoruniversal.com/gerador-de-inscricao-estadual);

@@ -94,5 +94,15 @@ class ValidadorTest extends TestCase
     public function testDistritoFederalFalse(){
         self::assertFalse(Validador::check(Estados::DF, "0108368143017"));
     }
+    public function testEspiritoSanto()
+    {
+        self::assertTrue(Validador::check(Estados::ES, "639191444"));
+    }
+
+    public function testEspiritoSantoFalse()
+    {
+        self::assertFalse(Validador::check(Estados::ES, "639191445"));
+    }
+
 
 }
