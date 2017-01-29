@@ -18,13 +18,12 @@ class DistritoFederal implements ValidadorInteface
     public static function check($inscricao_estadual)
     {
         $valid = true;
-        // se não tiver 9 digitos não é valido
+        // se não tiver 13 digitos não é valido
         if (strlen($inscricao_estadual) != 13) {
             $valid = false;
         }
         if ('07' != substr($inscricao_estadual, 0, 2)) {
             $valid = false;
-            echo "teste: " . strpos($inscricao_estadual, "07");
         }
 
         if (!$valid || !self::calculaDigitos($inscricao_estadual)) {
