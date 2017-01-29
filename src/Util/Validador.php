@@ -16,6 +16,7 @@ use Thiagocfn\InscricaoEstadual\Util\Validador\Amapa;
 use Thiagocfn\InscricaoEstadual\Util\Validador\Amazonas;
 use Thiagocfn\InscricaoEstadual\Util\Validador\Bahia;
 use Thiagocfn\InscricaoEstadual\Util\Validador\Ceara;
+use Thiagocfn\InscricaoEstadual\Util\Validador\DistritoFederal;
 
 class Validador
 {
@@ -47,6 +48,9 @@ class Validador
                 break;
             case Estados::CE:
                 $valid = Ceara::check($inscricao_estadual);
+                break;
+            case Estados::DF:
+                $valid = DistritoFederal::check($inscricao_estadual);
                 break;
             default:
                 $valid = false;
