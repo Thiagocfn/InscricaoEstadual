@@ -7,6 +7,10 @@
 Biblioteca de validação de inscrição estadual para todos os estados brasileiros.
 Atenção!! Incompleto.
 
+## Coverage
+[![Coverage](https://codecov.io/gh/Thiagocfn/InscricaoEstadual/commit/6aa034ff6c61df18df2719818f1ca247c0789f45/graphs/sunburst.svg)](https://codecov.io/gh/Thiagocfn/InscricaoEstadual/commit/6aa034ff6c61df18df2719818f1ca247c0789f45/graphs/sunburst.svg)
+
+
 ## Requerimentos
 
 * PHP 5.4.16+
