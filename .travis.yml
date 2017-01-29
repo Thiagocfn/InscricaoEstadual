@@ -14,7 +14,7 @@ matrix:
 
   include:
     - php: 7.0
-      env: CODECOVERAGE=1 DEFAULT=0
+      env: CODECOVERAGE=1 DEFAULT=0 CODECOV_TOKEN=f92e54c5-e70c-45ad-9f7d-0a4eb9414bdb
 
 before_script:
   - sh -c "if [ '$CODECOVERAGE' != '1' ]; then phpenv config-rm xdebug.ini; fi"
