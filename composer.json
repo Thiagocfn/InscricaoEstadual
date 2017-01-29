@@ -1,6 +1,7 @@
 {
   "name": "thiagocfn/inscricaoestadual",
   "homepage": "https://github.com/thiagocfn/inscricaoestadual",
+  "license": "MIT",
   "type": "library",
   "description": "Biblioteca em PHP para validação de todas as Inscrições Estaduais de todo o Brasil, seguindo as regras da SEFAZ. http://www.sintegra.gov.br/insc_est.html",
   "require": {

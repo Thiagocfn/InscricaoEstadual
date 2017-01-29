@@ -1,5 +1,8 @@
 # Inscrição Estadual
 
+
+[![Build Status](https://travis-ci.org/Thiagocfn/InscricaoEstadual.svg?branch=master)](https://travis-ci.org/Thiagocfn/InscricaoEstadual)
+
 Biblioteca de validação de inscrição estadual para todos os estados brasileiros.
 Atenção!! Incompleto.
 
