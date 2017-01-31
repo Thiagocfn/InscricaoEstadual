@@ -132,5 +132,29 @@ class ValidadorTest extends TestCase
         self::assertFalse(Validador::check(Estados::GO, "0101030940"));
     }
 
+    public function testMaranhao()
+    {
+        // Regra convencional
+        self::assertTrue(Validador::check(Estados::MA, "120000008"));
+
+        // Digito "11" que é convertido para 0
+        self::assertTrue(Validador::check(Estados::MA, "120000040"));
+
+        // Digito "10" que é convertido para 0
+        self::assertTrue(Validador::check(Estados::MA, "120000130"));
+    }
+
+    public function testMaranhaoFalse()
+    {
+        // Tamanho diferente de 9 dígitos
+        self::assertFalse(Validador::check(Estados::MA, "0120000008"));
+
+        // Não começa com 12
+        self::assertFalse(Validador::check(Estados::MA, "109161793"));
+
+        // Digito verificador incorreto
+        self::assertFalse(Validador::check(Estados::MA, "120000007"));
+    }
+
 
 }
