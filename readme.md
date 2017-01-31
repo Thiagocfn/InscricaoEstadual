@@ -21,6 +21,7 @@ Atenção!! Incompleto.
 do estado do Amazonas
 * A regra de validação do Ceará é a mesma do Espirito Santo
 * A regra de validação de Goiás é muito proxima de Ceará e Espirito Santo, devem ter uns 75% das IEs validas de Goiás devem ser equivalentes a Ceará e Espirito Santo.
+* Pela regra de validação de Mato Grosso valida a IE 00000000000
 
 ## Links úteis
 * Gerador de Inscrições estaduais - [http://www.geradoruniversal.com/gerador-de-inscricao-estadual](http://www.geradoruniversal.com/gerador-de-inscricao-estadual);

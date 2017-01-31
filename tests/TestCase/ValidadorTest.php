@@ -86,6 +86,9 @@ class ValidadorTest extends TestCase
     public function testCearaFalse()
     {
         self::assertFalse(Validador::check(Estados::CE, "853511943"));
+
+        // ie superior a 9 digitos
+        self::assertFalse(Validador::check(Estados::CE, "0853511942"));
     }
 
     public function testDistritoFederal()
@@ -154,6 +157,20 @@ class ValidadorTest extends TestCase
 
         // Digito verificador incorreto
         self::assertFalse(Validador::check(Estados::MA, "120000007"));
+    }
+
+    public function testMatoGrosso()
+    {
+        self::assertTrue(Validador::check(Estados::MT, "00000000000"));
+    }
+
+    public function testMatoGrossoFalse()
+    {
+        // Não tem 11 digitos
+        self::assertFalse(Validador::check(Estados::MT, "0000000000"));
+
+        // digito verificador inválido
+        self::assertFalse(Validador::check(Estados::MT, "12345678901"));
     }
 
 
