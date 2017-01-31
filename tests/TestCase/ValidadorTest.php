@@ -7,14 +7,19 @@ use Thiagocfn\InscricaoEstadual\Util\Validador;
 
 class ValidadorTest extends TestCase
 {
+    public function testEstadoInexistente()
+    {
+        self::assertFalse(Validador::check("NY", "123456789"));
+    }
+
     public function testAcre()
     {
-        self::assertTrue(Validador::check("AC", "0108368143017"));
+        self::assertTrue(Validador::check(Estados::AC, "0108368143017"));
     }
 
     public function testAcreFalse()
     {
-        self::assertFalse(Validador::check("AC", "0187634580933"));
+        self::assertFalse(Validador::check(Estados::AC, "0187634580933"));
     }
 
     public function testAlagoas()
@@ -268,6 +273,21 @@ class ValidadorTest extends TestCase
 
         // ie superior a 9 digitos
         self::assertFalse(Validador::check(Estados::PB, "0853511942"));
+    }
+
+    public function testParana()
+    {
+        // Regra convencional e quando o digito é "10" ou "11"
+        self::assertTrue(Validador::check(Estados::PR, "4447953604"));
+    }
+
+    public function testParanaFalse()
+    {
+        // Dígito verificador incorreto
+        self::assertFalse(Validador::check(Estados::PR, "4447953640"));
+
+        // IE superior a 10 digitos
+        self::assertFalse(Validador::check(Estados::PR, "04447953604"));
     }
 
 

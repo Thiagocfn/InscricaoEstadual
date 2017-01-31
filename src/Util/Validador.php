@@ -25,6 +25,7 @@ use Thiagocfn\InscricaoEstadual\Util\Validador\MatoGrossoDoSul;
 use Thiagocfn\InscricaoEstadual\Util\Validador\MinasGerais;
 use Thiagocfn\InscricaoEstadual\Util\Validador\Para;
 use Thiagocfn\InscricaoEstadual\Util\Validador\Paraiba;
+use Thiagocfn\InscricaoEstadual\Util\Validador\Parana;
 
 class Validador
 {
@@ -83,6 +84,9 @@ class Validador
                 break;
             case Estados::PB:
                 $valid = Paraiba::check($inscricao_estadual);
+                break;
+            case Estados::PR:
+                $valid = Parana::check($inscricao_estadual);
                 break;
             default:
                 $valid = false;
