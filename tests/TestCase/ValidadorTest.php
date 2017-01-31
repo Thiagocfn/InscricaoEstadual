@@ -173,5 +173,29 @@ class ValidadorTest extends TestCase
         self::assertFalse(Validador::check(Estados::MT, "12345678901"));
     }
 
+    public function testMatoGrossoDoSul()
+    {
+        // Regra convencional
+        self::assertTrue(Validador::check(Estados::MS, "280000006"));
+
+        // Digito "10" que é convertido para 0
+        self::assertTrue(Validador::check(Estados::MS, "280000090"));
+
+        // Digito "11" que é convertido para 0
+        self::assertTrue(Validador::check(Estados::MS, "280000030"));
+    }
+
+    public function testMatoGrossoDoSulFalse()
+    {
+        // Tamanho diferente de 9 dígitos
+        self::assertFalse(Validador::check(Estados::MS, "0280000006"));
+
+        // Digito verificador verdadeiro, mas não inicia com 28
+        self::assertFalse(Validador::check(Estados::MS, "853511942"));
+
+        // Digito verificador inválido
+        self::assertFalse(Validador::check(Estados::MS, "280000031"));
+    }
+
 
 }
