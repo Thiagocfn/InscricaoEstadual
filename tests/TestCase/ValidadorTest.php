@@ -88,12 +88,16 @@ class ValidadorTest extends TestCase
         self::assertFalse(Validador::check(Estados::CE, "853511943"));
     }
 
-    public function testDistritoFederal(){
+    public function testDistritoFederal()
+    {
         self::assertTrue(Validador::check(Estados::DF, "0754002000176"));
     }
-    public function testDistritoFederalFalse(){
+
+    public function testDistritoFederalFalse()
+    {
         self::assertFalse(Validador::check(Estados::DF, "0108368143017"));
     }
+
     public function testEspiritoSanto()
     {
         self::assertTrue(Validador::check(Estados::ES, "639191444"));
@@ -102,6 +106,30 @@ class ValidadorTest extends TestCase
     public function testEspiritoSantoFalse()
     {
         self::assertFalse(Validador::check(Estados::ES, "639191445"));
+    }
+
+    public function testGoias()
+    {
+        // começa com 10 e o digito verificador  é a regra base
+        self::assertTrue(Validador::check(Estados::GO, "109161793"));
+
+        // começa com 10 e o dígito verificador é 1, Dentro do intervalo que mantém em 1
+        self::assertTrue(Validador::check(Estados::GO, "101031131"));
+
+        // começa com 10 e o dígito verificador é 1, Fora do intervalo que mantém em 1, transformando em 0
+        self::assertTrue(Validador::check(Estados::GO, "101030940"));
+    }
+
+    public function testGoiasFalse()
+    {
+        // começa com 10 e o digito verificador  está errado
+        self::assertFalse(Validador::check(Estados::GO, "109161794"));
+
+        // não começa com 10, 11 ou 15
+        self::assertFalse(Validador::check(Estados::GO, "121031131"));
+
+        // tamanho diferente de 9 difgitos
+        self::assertFalse(Validador::check(Estados::GO, "0101030940"));
     }
 
 
