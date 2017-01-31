@@ -209,5 +209,17 @@ class ValidadorTest extends TestCase
         self::assertTrue(Validador::check(Estados::MG, "4333908332560"));
     }
 
+    public function testMinasGeraisFalse()
+    {
+        // Tamanho diferente de 13 dígitos
+        self::assertFalse(Validador::check(Estados::MG, "04333908330177"));
+
+        // Segundo digito verificador invalido
+        self::assertFalse(Validador::check(Estados::MG, "4333908330176"));
+
+        // Primeiro digito verificador invalido
+        self::assertFalse(Validador::check(Estados::MG, "4333908330167"));
+    }
+
 
 }
