@@ -22,6 +22,7 @@ use Thiagocfn\InscricaoEstadual\Util\Validador\Goias;
 use Thiagocfn\InscricaoEstadual\Util\Validador\Maranhao;
 use Thiagocfn\InscricaoEstadual\Util\Validador\MatoGrosso;
 use Thiagocfn\InscricaoEstadual\Util\Validador\MatoGrossoDoSul;
+use Thiagocfn\InscricaoEstadual\Util\Validador\MinasGerais;
 
 class Validador
 {
@@ -71,6 +72,9 @@ class Validador
                 break;
             case Estados::MS:
                 $valid = MatoGrossoDoSul::check($inscricao_estadual);
+                break;
+            case Estados::MG:
+                $valid = MinasGerais::check($inscricao_estadual);
                 break;
             default:
                 $valid = false;

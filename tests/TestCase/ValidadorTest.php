@@ -197,5 +197,17 @@ class ValidadorTest extends TestCase
         self::assertFalse(Validador::check(Estados::MS, "280000031"));
     }
 
+    public function testMinasGerais()
+    {
+        // Regra convencional
+        self::assertTrue(Validador::check(Estados::MG, "4333908330177"));
+
+        // Digito "10" que é convertido para 0
+        self::assertTrue(Validador::check(Estados::MG, "4333908330410"));
+
+        // Digito "11" que é convertido para 0
+        self::assertTrue(Validador::check(Estados::MG, "4333908332560"));
+    }
+
 
 }
