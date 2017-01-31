@@ -108,7 +108,11 @@ class ValidadorTest extends TestCase
 
     public function testEspiritoSantoFalse()
     {
+        // Dígito verificador incorreto
         self::assertFalse(Validador::check(Estados::ES, "639191445"));
+
+        // IE superior a 9 digitos
+        self::assertFalse(Validador::check(Estados::ES, "0639191444"));
     }
 
     public function testGoias()
@@ -245,7 +249,26 @@ class ValidadorTest extends TestCase
         self::assertFalse(Validador::check(Estados::PA, "150000007"));
     }
 
+    public function testParaiba()
+    {
+        // Regra convencional
+        self::assertTrue(Validador::check(Estados::PB, "853511942"));
 
+        // Digito "11" que é convertido para 0
+        self::assertTrue(Validador::check(Estados::PB, "853511950"));
+
+        // Digito "10" que é convertido para 0
+        self::assertTrue(Validador::check(Estados::PB, "853512230"));
+    }
+
+    public function testParaibaFalse()
+    {
+        // Dígito verificador incorreto
+        self::assertFalse(Validador::check(Estados::PB, "853511943"));
+
+        // ie superior a 9 digitos
+        self::assertFalse(Validador::check(Estados::PB, "0853511942"));
+    }
 
 
 }
