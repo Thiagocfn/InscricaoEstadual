@@ -221,5 +221,31 @@ class ValidadorTest extends TestCase
         self::assertFalse(Validador::check(Estados::MG, "4333908330167"));
     }
 
+    public function testPara()
+    {
+        // Regra convencional
+        self::assertTrue(Validador::check(Estados::PA, "150000006"));
+
+        // Digito "11" que é convertido para 0
+        self::assertTrue(Validador::check(Estados::PA, "150000030"));
+
+        // Digito "10" que é convertido para 0
+        self::assertTrue(Validador::check(Estados::PA, "150000260"));
+    }
+
+    public function testParaFalse()
+    {
+        // Tamanho diferente de 9 dígitos
+        self::assertFalse(Validador::check(Estados::PA, "0150000006"));
+
+        // Não começa com 15
+        self::assertFalse(Validador::check(Estados::PA, "120000008"));
+
+        // Digito verificador incorreto
+        self::assertFalse(Validador::check(Estados::PA, "150000007"));
+    }
+
+
+
 
 }
