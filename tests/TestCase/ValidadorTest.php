@@ -311,5 +311,26 @@ class ValidadorTest extends TestCase
         self::assertTrue(Validador::check(Estados::PI, "052364534"));
     }
 
+    public function testRioDeJaneiro()
+    {
+        // Regra convencional
+        self::assertTrue(Validador::check(Estados::RJ, "62545372"));
+
+        // Digito "11" que é convertido para 0
+        self::assertTrue(Validador::check(Estados::RJ, "62545380"));
+
+        // Digito "10" que é convertido para 0
+        self::assertTrue(Validador::check(Estados::RJ, "62545470"));
+    }
+
+    public function testRioDeJaneiroFalse()
+    {
+        // Dígito verificador incorreto
+        self::assertFalse(Validador::check(Estados::RJ, "20441620"));
+
+        // IE superior a 8 digitos
+        self::assertFalse(Validador::check(Estados::RJ, "020441623"));
+    }
+
 
 }
