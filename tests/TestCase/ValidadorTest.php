@@ -375,8 +375,29 @@ class ValidadorTest extends TestCase
 
         // Dígito verificador incorreto
         self::assertFalse(Validador::check(Estados::RS, "2007693232"));
+    }
 
+    public function testRondonia()
+    {
 
+        // Regra convencional
+        self::assertTrue(Validador::check(Estados::RO, "01078042249629"));
+
+        // Digito "10" que é convertido para 0
+        self::assertTrue(Validador::check(Estados::RO, "01078042249670"));
+
+        // Digito "11" que é convertido para 1
+        self::assertTrue(Validador::check(Estados::RO, "01078042249751"));
+
+    }
+
+    public function testRondoniaFalse()
+    {
+        // IE superior a 14 dígitos (dígito verificador "correto")
+        self::assertFalse(Validador::check(Estados::RO, "001078042249627"));
+
+        // Digito verificador incorreto (calculado sem os zeros a esquerda)
+        self::assertFalse(Validador::check(Estados::RO, "01078042249756"));
     }
 
 
