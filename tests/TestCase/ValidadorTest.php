@@ -332,5 +332,26 @@ class ValidadorTest extends TestCase
         self::assertFalse(Validador::check(Estados::RJ, "020441623"));
     }
 
+    public function testRioGrandeDoNorte()
+    {
+        // Regra convencional
+        self::assertTrue(Validador::check(Estados::RN, "2007693232"));
+
+        // Digito "10" que é convertido para 0
+        self::assertTrue(Validador::check(Estados::RN, "2003569880"));
+
+        // IE antiga
+        self::assertTrue(Validador::check(Estados::RN, "203569881"));
+    }
+
+    public function testRioGrandeDoNorteFalse()
+    {
+        // Não começa com 20
+        self::assertFalse(Validador::check(Estados::RN, "0203569881"));
+
+        // Não tem 9 ou 10 dígitos (dígito verificador "correto")
+        self::assertFalse(Validador::check(Estados::RN, "20356988104"));
+    }
+
 
 }

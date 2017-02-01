@@ -29,6 +29,7 @@ use Thiagocfn\InscricaoEstadual\Util\Validador\Parana;
 use Thiagocfn\InscricaoEstadual\Util\Validador\Pernambuco;
 use Thiagocfn\InscricaoEstadual\Util\Validador\Piaui;
 use Thiagocfn\InscricaoEstadual\Util\Validador\RioDeJaneiro;
+use Thiagocfn\InscricaoEstadual\Util\Validador\RioGrandeDoNorte;
 
 class Validador
 {
@@ -99,6 +100,9 @@ class Validador
                 break;
             case Estados::RJ:
                 $valid = RioDeJaneiro::check($inscricao_estadual);
+                break;
+            case Estados::RN:
+                $valid = RioGrandeDoNorte::check($inscricao_estadual);
                 break;
             default:
                 $valid = false;
