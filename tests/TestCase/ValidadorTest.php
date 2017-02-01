@@ -418,5 +418,12 @@ class ValidadorTest extends TestCase
         self::assertFalse(Validador::check(Estados::RR, "240061537"));
     }
 
+    public function testSantaCatarina()
+    {
+
+        //Regra Convencional
+        self::assertTrue(Validador::check(Estados::SC, "330430572"));
+    }
+
 
 }

@@ -19,10 +19,10 @@ Atenção!! Incompleto.
 
 * Acredito que todas as IE do estado do Amapá sejam válidas pelas regras de validação 
 do estado do Amazonas
-* A regra de validação do Ceará é a mesma do Espirito Santo e da Paraíba
+* A regra de validação do Ceará é a mesma do Espirito Santo, da Paraíba e de Santa Catarina.
 * A regra de validação de Goiás é muito proxima de Ceará e Espirito Santo, devem ter uns 75% das IEs validas de Goiás devem ser equivalentes a Ceará e Espirito Santo.
-* A regra de validação do Maranhão é identica a de Ceará, contudo deve começar pela string "12"
-* Pela regra de validação de Mato Grosso valida a IE 00000000000
+* A regra de validação do Maranhão é identica a de Ceará, contudo deve começar pela string "12".
+* Pela regra de validação de Mato Grosso valida a IE 00000000000 .
 * A regra de validação do Paraná é muito parecida com a regra da Bahia, mudando elementos como pesos e quantidade de dígitos, por exemplo.
 * A regra de validação de Pernambuco é muito parecida com a regra do Paraná, mudando apenas quantidade de dígitos e pesos utilizados. Pode ser interessante diminuir duplicação de código.
 
