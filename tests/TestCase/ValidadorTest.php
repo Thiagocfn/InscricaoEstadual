@@ -306,5 +306,10 @@ class ValidadorTest extends TestCase
         self::assertFalse(Validador::check(Estados::PE, "0925870110"));
     }
 
+    public function testPiaui()
+    {
+        self::assertTrue(Validador::check(Estados::PI, "052364534"));
+    }
+
 
 }
