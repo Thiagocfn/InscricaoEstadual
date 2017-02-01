@@ -420,10 +420,25 @@ class ValidadorTest extends TestCase
 
     public function testSantaCatarina()
     {
-
-        //Regra Convencional
+        // Regra Convencional
         self::assertTrue(Validador::check(Estados::SC, "330430572"));
     }
 
+    public function testSaoPaulo()
+    {
+        // Regra convencional
+        self::assertTrue(Validador::check(Estados::SP, "110042490114"));
+    }
 
+    public function testSaoPauloFalse()
+    {
+        // IE superior a 12 dígitos (dígito verificador "correto")
+        self::assertFalse(Validador::check(Estados::SP, "1110042494114"));
+
+        // Segundo digito incorreto
+        self::assertFalse(Validador::check(Estados::SP, "110042490113"));
+
+        // primeiro digito incorreto (segundo dígito "correto")
+        self::assertFalse(Validador::check(Estados::SP, "110042498113"));
+    }
 }

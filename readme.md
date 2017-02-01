@@ -32,6 +32,8 @@ do estado do Amazonas
 * Pela regra de validação de Mato Grosso valida a IE 00000000000 .
 * A regra de validação do Paraná é muito parecida com a regra da Bahia, mudando elementos como pesos e quantidade de dígitos, por exemplo.
 * A regra de validação de Pernambuco é muito parecida com a regra do Paraná, mudando apenas quantidade de dígitos e pesos utilizados. Pode ser interessante diminuir duplicação de código.
+* Não foi implementado a validação de IE no formato antigo de Pernambuco.
+* Não foi implementada validação de IE para produtor Rural de São Paulo.
 
 ## Links úteis
 * Gerador de Inscrições estaduais - [http://www.geradoruniversal.com/gerador-de-inscricao-estadual](http://www.geradoruniversal.com/gerador-de-inscricao-estadual);

@@ -34,6 +34,7 @@ use Thiagocfn\InscricaoEstadual\Util\Validador\RioGrandeDoSul;
 use Thiagocfn\InscricaoEstadual\Util\Validador\Rondonia;
 use Thiagocfn\InscricaoEstadual\Util\Validador\Roraima;
 use Thiagocfn\InscricaoEstadual\Util\Validador\SantaCatarina;
+use Thiagocfn\InscricaoEstadual\Util\Validador\SaoPaulo;
 
 class Validador
 {
@@ -119,6 +120,9 @@ class Validador
                 break;
             case Estados::SC:
                 $valid = SantaCatarina::check($inscricao_estadual);
+                break;
+            case Estados::SP:
+                $valid = SaoPaulo::check($inscricao_estadual);
                 break;
             default:
                 $valid = false;
