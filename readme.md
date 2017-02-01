@@ -15,6 +15,13 @@ Atenção!! Incompleto.
 
 * PHP 5.4.16+
 
+## Instalação
+
+Usando [Composer](http://getcomposer.org):
+
+```
+composer require thiagocfn/inscricaoestadual
+```
 ## Observações
 
 * Acredito que todas as IE do estado do Amapá sejam válidas pelas regras de validação 
