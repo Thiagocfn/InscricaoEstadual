@@ -351,6 +351,32 @@ class ValidadorTest extends TestCase
 
         // Não tem 9 ou 10 dígitos (dígito verificador "correto")
         self::assertFalse(Validador::check(Estados::RN, "20356988104"));
+
+        // Dígito verificador incorreto
+        self::assertFalse(Validador::check(Estados::RN, "2007693231"));
+    }
+
+    public function testRioGrandeDoSul()
+    {
+        // Regra convencional
+        self::assertTrue(Validador::check(Estados::RS, "0305169149"));
+
+        // Digito "10" que é convertido para 0
+        self::assertTrue(Validador::check(Estados::RS, "1202762660"));
+
+        // Digito "11" que é convertido para 0
+        self::assertTrue(Validador::check(Estados::RS, "1202762120"));
+    }
+
+    public function testRioGrandeDoSulFalse()
+    {
+        // IE superior a 10 dígitos (dígito verificador "correto")
+        self::assertFalse(Validador::check(Estados::RS, "02007693230"));
+
+        // Dígito verificador incorreto
+        self::assertFalse(Validador::check(Estados::RS, "2007693232"));
+
+
     }
 
 
