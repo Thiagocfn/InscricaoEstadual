@@ -38,11 +38,11 @@ class Ceara implements ValidadorInteface
      */
     protected static function calculaDigito($inscricao_estadual)
     {
-        $peso = 9;
-        $posicao = 8;
         $soma = 0;
         $length = strlen($inscricao_estadual);
-        $corpo = substr($inscricao_estadual, 0, $length - 1);
+        $posicao = $length - 1;
+        $peso = $length;
+        $corpo = substr($inscricao_estadual, 0, $posicao);
         foreach (str_split($corpo) as $item) {
             $soma += $item * $peso;
             $peso--;

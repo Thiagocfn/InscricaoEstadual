@@ -32,6 +32,7 @@ use Thiagocfn\InscricaoEstadual\Util\Validador\RioDeJaneiro;
 use Thiagocfn\InscricaoEstadual\Util\Validador\RioGrandeDoNorte;
 use Thiagocfn\InscricaoEstadual\Util\Validador\RioGrandeDoSul;
 use Thiagocfn\InscricaoEstadual\Util\Validador\Rondonia;
+use Thiagocfn\InscricaoEstadual\Util\Validador\Roraima;
 
 class Validador
 {
@@ -111,6 +112,9 @@ class Validador
                 break;
             case Estados::RO:
                 $valid = Rondonia::check($inscricao_estadual);
+                break;
+            case Estados::RR:
+                $valid = Roraima::check($inscricao_estadual);
                 break;
             default:
                 $valid = false;

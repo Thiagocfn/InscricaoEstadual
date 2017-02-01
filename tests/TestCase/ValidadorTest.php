@@ -400,5 +400,23 @@ class ValidadorTest extends TestCase
         self::assertFalse(Validador::check(Estados::RO, "01078042249756"));
     }
 
+    public function testRoraima()
+    {
+        // Regra convencional
+        self::assertTrue(Validador::check(Estados::RR, "240061536"));
+    }
+
+    public function testRoraimaFalse()
+    {
+        // Não começa com 24
+        self::assertFalse(Validador::check(Estados::RR, "024006150"));
+
+        // IE superior a 9 dígitos (dígito verificador "correto")
+        self::assertFalse(Validador::check(Estados::RR, "2400615366"));
+
+        // Dígito verificador incorreto
+        self::assertFalse(Validador::check(Estados::RR, "240061537"));
+    }
+
 
 }
