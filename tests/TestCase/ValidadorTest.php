@@ -290,5 +290,21 @@ class ValidadorTest extends TestCase
         self::assertFalse(Validador::check(Estados::PR, "04447953604"));
     }
 
+    public function testPernambuco()
+    {
+        // Regra convencional e quando o digito é "10" ou "11"
+        self::assertTrue(Validador::check(Estados::PE, "288625706"));
+    }
+
+    public function testPernambucoFalse()
+    {
+
+        // Dígitos verificadores invertidos
+        self::assertFalse(Validador::check(Estados::PE, "925870101"));
+
+        // IE superior a 9 digitos
+        self::assertFalse(Validador::check(Estados::PE, "0925870110"));
+    }
+
 
 }
