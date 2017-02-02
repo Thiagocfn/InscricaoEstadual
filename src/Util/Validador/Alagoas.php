@@ -52,6 +52,7 @@ class Alagoas implements ValidadorInteface
         $produto = $soma * 10;
         $dig = $produto - (((int)($produto / 11)) * 11);
         //se a diferença for 10 ou 11 então o digito é 0
+
         if ($dig >= 10) {
             $dig = 0;
         }

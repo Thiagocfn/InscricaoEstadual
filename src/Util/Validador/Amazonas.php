@@ -50,10 +50,9 @@ class Amazonas implements ValidadorInteface
             $dig = 11 - $soma;
         } else {
             $resto = $soma % 11;
-            if ($resto <= 0) {
+            $dig = 11 - $resto;
+            if ($dig >= 10) {
                 $dig = 0;
-            } else {
-                $dig = 11 - $resto;
             }
         }
         return $dig == $inscricao_estadual[$posicao];

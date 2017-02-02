@@ -35,22 +35,59 @@ class ValidadorTest extends TestCase
 
     public function testAlagoas()
     {
-        self::assertTrue(Validador::check("AL", "248659758"));
+        // Regra convencional
+        self::assertTrue(Validador::check(Estados::AL, "248659758"));
+
+        // Dígito 10 convertido para 0
+        self::assertTrue(Validador::check(Estados::AL, "247424170"));
     }
 
     public function testAlagoasFalse()
     {
-        self::assertFalse(Validador::check("AL", "248659759"));
+        // Dígito verificador incorreto
+        self::assertFalse(Validador::check(Estados::AL, "248659759"));
+
+        // Não começa com 24
+        self::assertFalse(Validador::check(Estados::AL, "258659750"));
+
+        // Não tem 9 digitos
+        self::assertFalse(Validador::check(Estados::AL, "2486597584"));
     }
 
     public function testAmapa()
     {
-        self::assertTrue(Validador::check("AP", "036029572"));
+        // Regra convencional
+        self::assertTrue(Validador::check(Estados::AP, "036029572"));
+
+        // IE entre 03000001 e 03017000
+        self::assertTrue(Validador::check(Estados::AP, "030123459"));
+
+        // IE entre 03000001 e 03017000 com digito 10 que converte para 0
+        self::assertTrue(Validador::check(Estados::AP, "030000080"));
+
+        // IE entre 03000001 e 03017000 com digito 11 que converte para d (0)
+        self::assertTrue(Validador::check(Estados::AP, "030000160"));
+
+        // IE entre 03017001 e 03019022
+        self::assertTrue(Validador::check(Estados::AP, "030170011"));
+
+        // IE entre 03017001 e 03019022 com digito 10 que converte para 0
+        self::assertTrue(Validador::check(Estados::AP, "030170020"));
+
+        // IE entre 03017001 e 03019022 com digito 11 que converte para d (1)
+        self::assertTrue(Validador::check(Estados::AP, "030170071"));
     }
 
     public function testAmapaFalse()
     {
-        self::assertFalse(Validador::check("AP", "036029573"));
+        // digito verificador incorreto
+        self::assertFalse(Validador::check(Estados::AP, "036029573"));
+
+        // mais de 9 digitos
+        self::assertFalse(Validador::check(Estados::AP, "0306029570"));
+
+        // Não começa com 03
+        self::assertFalse(Validador::check(Estados::AP, "003060292"));
     }
 
     public function testAmazonas()

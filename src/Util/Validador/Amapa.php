@@ -42,8 +42,11 @@ class Amapa implements ValidadorInteface
     private static function calculaDigito($inscricao_estadual)
     {
 
-        $peso = 9;
-        $posicao = 8;
+        $length = strlen($inscricao_estadual);
+        $posicao = $length - 1;
+        $peso = $length;
+        $corpo = substr($inscricao_estadual, 0, $posicao);
+
 
         //verificando informações de "p" e "d"
 
@@ -51,27 +54,29 @@ class Amapa implements ValidadorInteface
         $p = 0;
         // utilizado como verificador alternativo
         $d = 0;
-        if (3000001 <= $inscricao_estadual && $inscricao_estadual <= 3017000) {
+        if ('03000001' <= $corpo && $corpo <= '03017000') {
             $p = 5;
             $d = 0;
-        } elseif (3017001 <= $inscricao_estadual && $inscricao_estadual <= 3019022) {
+        } elseif ('03017001' <= $corpo && $corpo <= '03019022') {
             $p = 9;
             $d = 1;
         }
 
         $soma = $p;
-        for ($i = 0; $i < $posicao; $i++) {
-            $soma += $inscricao_estadual[$i] * $peso;
+        foreach (str_split($corpo) as $item) {
+            $soma += $item * $peso;
             $peso--;
         }
         $dig = 11 - ($soma % 11);
         //se a diferença for 10 o digito é 0, se for 11 o digito será $d
-        if ($dig >= 10) {
+
+        if ($dig == 10) {
             $dig = 0;
-            if ($dig == 11) {
-                $dig = $d;
-            }
         }
+        if ($dig == 11) {
+            $dig = $d;
+        }
+
         return $dig == $inscricao_estadual[$posicao];
     }
 }
