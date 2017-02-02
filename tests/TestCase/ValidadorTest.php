@@ -162,12 +162,21 @@ class ValidadorTest extends TestCase
 
     public function testDistritoFederal()
     {
-        self::assertTrue(Validador::check(Estados::DF, "0754002000176"));
+        // Regra convencional
+        //self::assertTrue(Validador::check(Estados::DF, "0754002000176"));
+
+        // Digito 10 que é convertido para 0
+        self::assertTrue(Validador::check(Estados::DF, "0754002000508"));
     }
 
     public function testDistritoFederalFalse()
     {
+        // Não começa com 07
         self::assertFalse(Validador::check(Estados::DF, "0108368143017"));
+
+
+        // Não tem 13 dígitos
+        self::assertFalse(Validador::check(Estados::DF, "07008368143094"));
     }
 
     public function testEspiritoSanto()
