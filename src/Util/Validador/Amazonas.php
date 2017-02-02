@@ -39,11 +39,13 @@ class Amazonas implements ValidadorInteface
     private static function calculaDigito($inscricao_estadual)
     {
 
-        $peso = 9;
-        $posicao = 8;
         $soma = 0;
-        for ($i = 0; $i < $posicao; $i++) {
-            $soma += $inscricao_estadual[$i] * $peso;
+        $length = strlen($inscricao_estadual);
+        $posicao = $length - 1;
+        $peso = $length;
+        $corpo = substr($inscricao_estadual, 0, $posicao);
+        foreach (str_split($corpo) as $item) {
+            $soma += $item * $peso;
             $peso--;
         }
         if ($soma < 11) {
@@ -51,6 +53,7 @@ class Amazonas implements ValidadorInteface
         } else {
             $resto = $soma % 11;
             $dig = 11 - $resto;
+
             if ($dig >= 10) {
                 $dig = 0;
             }

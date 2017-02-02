@@ -92,12 +92,25 @@ class ValidadorTest extends TestCase
 
     public function testAmazonas()
     {
+        // Regra convencional
         self::assertTrue(Validador::check("AM", "036029572"));
+
+        // soma inferior a 11
+        self::assertTrue(Validador::check("AM", "000000019"));
+
+        // Digito 11 convertido para 0
+        self::assertTrue(Validador::check("AM", "046893830"));
+
+
     }
 
     public function testAmazonasFalse()
     {
+        // Digito verificador incorreto
         self::assertFalse(Validador::check("AM", "036029573"));
+
+        // mais de 9 dígitos
+        self::assertFalse(Validador::check("AM", "0036029572"));
     }
 
     public function testBahia()
