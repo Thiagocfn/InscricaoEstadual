@@ -5,7 +5,6 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/thiagocfn/InscricaoEstadual.svg?style=flat-square)](https://packagist.org/packages/Thiagocfn/InscricaoEstadual)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://packagist.org/packages/thiagocfn/InscricaoEstadual)
 Biblioteca de validação de inscrição estadual para todos os estados brasileiros.
-Atenção!! Incompleto.
 
 ## Coverage
 [![Coverage](https://codecov.io/gh/Thiagocfn/InscricaoEstadual/branch/master/graphs/sunburst.svg)](https://codecov.io/gh/Thiagocfn/InscricaoEstadual/branch/master)

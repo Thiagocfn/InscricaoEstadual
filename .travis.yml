@@ -7,7 +7,6 @@ php:
 env:
   global:
     - DEFAULT=1
-    - CODECOV_TOKEN=f92e54c5-e70c-45ad-9f7d-0a4eb9414bdb
 
 matrix:
   fast_finish: true
