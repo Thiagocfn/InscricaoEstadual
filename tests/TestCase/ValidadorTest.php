@@ -142,6 +142,9 @@ class ValidadorTest extends TestCase
         self::assertFalse(Validador::check(Estados::BA, "038343001"));
         //// mod 11
         self::assertFalse(Validador::check(Estados::BA, "778514731"));
+
+        // diferente de 8 ou 9 digitos
+        self::assertFalse(Validador::check(Estados::BA, "0012345636"));
     }
 
     public function testCeara()
