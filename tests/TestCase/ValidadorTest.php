@@ -441,4 +441,11 @@ class ValidadorTest extends TestCase
         // primeiro digito incorreto (segundo dígito "correto")
         self::assertFalse(Validador::check(Estados::SP, "110042498113"));
     }
+
+    public function testSergipe()
+    {
+
+        // Regra Convencional
+        self::assertTrue(Validador::check(Estados::SE, "017682606"));
+    }
 }
