@@ -36,6 +36,7 @@ use Thiagocfn\InscricaoEstadual\Util\Validador\Roraima;
 use Thiagocfn\InscricaoEstadual\Util\Validador\SantaCatarina;
 use Thiagocfn\InscricaoEstadual\Util\Validador\SaoPaulo;
 use Thiagocfn\InscricaoEstadual\Util\Validador\Sergipe;
+use Thiagocfn\InscricaoEstadual\Util\Validador\Tocantins;
 
 class Validador
 {
@@ -127,6 +128,9 @@ class Validador
                 break;
             case Estados::SE:
                 $valid = Sergipe::check($inscricao_estadual);
+                break;
+            case Estados::TO:
+                $valid = Tocantins::check($inscricao_estadual);
                 break;
             default:
                 $valid = false;

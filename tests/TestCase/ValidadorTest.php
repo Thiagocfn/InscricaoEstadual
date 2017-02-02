@@ -14,12 +14,23 @@ class ValidadorTest extends TestCase
 
     public function testAcre()
     {
-        self::assertTrue(Validador::check(Estados::AC, "0108368143017"));
+        // Regra convencional e dígito 10 que virou 0
+        self::assertTrue(Validador::check(Estados::AC, "0108368143106"));
     }
 
     public function testAcreFalse()
     {
+        // Segundo dígito verificador incorreto.
         self::assertFalse(Validador::check(Estados::AC, "0187634580933"));
+
+        // Primeiro dígito verificador incorreto.
+        self::assertFalse(Validador::check(Estados::AC, "0187634580924"));
+
+        // Não começa com 01
+        self::assertFalse(Validador::check(Estados::AC, "0018763458000"));
+
+        // Maior que 13 dígitos
+        self::assertFalse(Validador::check(Estados::AC, "01018763458064"));
     }
 
     public function testAlagoas()
@@ -447,5 +458,23 @@ class ValidadorTest extends TestCase
 
         // Regra Convencional
         self::assertTrue(Validador::check(Estados::SE, "017682606"));
+    }
+
+    public function testTocantins()
+    {
+        // Regra convencional
+        self::assertTrue(Validador::check(Estados::TO, "01027737427"));
+    }
+
+    public function testTocantinsFalse()
+    {
+        // Categoria invalida (dígito "correto")
+        self::assertFalse(Validador::check(Estados::TO, "01047737427"));
+
+        // IE com mais de 11 digitos (dígito "correto")
+        self::assertFalse(Validador::check(Estados::TO, "099999916599"));
+
+        // Dígito verificador incorreto
+        self::assertFalse(Validador::check(Estados::TO, "99999916598"));
     }
 }

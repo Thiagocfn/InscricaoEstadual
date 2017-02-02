@@ -31,10 +31,7 @@ class Acre implements ValidadorInteface
         if (substr($inscricao_estadual, 0, 2) != '01') {
             $valid = false;
         }
-        if (!self::calculaDigito(1, $inscricao_estadual)) {
-            $valid = false;
-        }
-        if (!self::calculaDigito(2, $inscricao_estadual)) {
+        if (!$valid || !self::calculaDigitos($inscricao_estadual)) {
             $valid = false;
         }
         return $valid;
@@ -46,32 +43,55 @@ class Acre implements ValidadorInteface
      *
      * Pesos: 4 3 2 9 8 7 6 5 4 3 2 para primeiro digito
      * Pesos: 5 4 3 2 9 8 7 6 5 4 3 2 para segundo digito
-     * @param $digito integer 1 ou 2
      * @param $inscricao_estadual string inscricao estadual
-     * @return bool true caso o digito seja verificado, false caso contrário.
+     * @return bool true caso os digitos sejam verificados, false caso contrário.
      */
-    private static function calculaDigito($digito, $inscricao_estadual)
+    private static function calculaDigitos($inscricao_estadual)
     {
-        if ($digito === 1) {
-            $peso = 4;
-            $posicao = 11;
-        } else {
-            $peso = 5;
-            $posicao = 12;
-        }
+
+        $length = strlen($inscricao_estadual);
+        $corpo = substr($inscricao_estadual, 0, $length - 2);
+
+        // Calculando o primeiro dígito
+        $_1dig = self::calculaDigito($corpo);
+        //adicionando o primeiro dígito no corpo para calcular o segundo dígito
+        $_2dig = self::calculaDigito($corpo . $_1dig);
+
+        $pos2dig = strlen($inscricao_estadual) - 1;
+
+        $pos1dig = strlen($inscricao_estadual) - 2;
+
+        return $inscricao_estadual[$pos1dig] == $_1dig && $inscricao_estadual[$pos2dig] == $_2dig;
+    }
+
+    /**
+     * Informa o digito para o corpo passado
+     * @param $corpo
+     * @return int dígito
+     */
+    private static function calculaDigito($corpo)
+    {
+        // vai começar em 4 quando o digito a ser verificado for o primeiro, e em 5 quando for o segundo
+        $peso = strlen($corpo) - 7;
+
         $soma = 0;
-        for ($i = 0; $i < $posicao; $i++) {
-            $soma += $inscricao_estadual[$i] * $peso;
+        foreach (str_split($corpo) as $digito) {
+            $soma += $digito * $peso;
             $peso--;
             if ($peso == 1) {
                 $peso = 9;
             }
         }
-        $dig = 11 - ($soma % 11);
-        //se a diferença for 10 ou 11 então o digito é 0
+
+        $modulo = 11;
+
+        $resto = $soma % $modulo;
+
+        $dig = $modulo - $resto;
         if ($dig >= 10) {
             $dig = 0;
         }
-        return $dig == $inscricao_estadual[$posicao];
+
+        return $dig;
     }
 }
