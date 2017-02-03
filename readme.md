@@ -3,7 +3,9 @@
 
 [![Build Status](https://travis-ci.org/Thiagocfn/InscricaoEstadual.svg?branch=master)](https://travis-ci.org/Thiagocfn/InscricaoEstadual)
 [![Total Downloads](https://img.shields.io/packagist/dt/thiagocfn/InscricaoEstadual.svg?style=flat-square)](https://packagist.org/packages/Thiagocfn/InscricaoEstadual)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/dc5594f3ad9443729737c4e07c02a85b)](https://www.codacy.com/app/Thiagocfn/InscricaoEstadual?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Thiagocfn/InscricaoEstadual&amp;utm_campaign=Badge_Grade)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://packagist.org/packages/thiagocfn/InscricaoEstadual)
+
 Biblioteca de validação de inscrição estadual para todos os estados brasileiros.
 
 ## Coverage
