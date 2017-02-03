@@ -10,7 +10,7 @@ before_script:
 script:
   - vendor/bin/phpunit --coverage-clover=clover.xml
   - wget -O codecov.sh https://codecov.io/bash
-  - sh codecov.sh
+  - bash codecov.sh
 after_script:
   - php vendor/bin/codacycoverage clover clover.xml --verbose
 notifications:
