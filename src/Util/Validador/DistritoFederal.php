@@ -22,11 +22,11 @@ class DistritoFederal implements ValidadorInteface
         if (strlen($inscricao_estadual) != 13) {
             $valid = false;
         }
-        if ('07' != substr($inscricao_estadual, 0, 2)) {
+        if ($valid && '07' != substr($inscricao_estadual, 0, 2)) {
             $valid = false;
         }
 
-        if (!$valid || !self::calculaDigitos($inscricao_estadual)) {
+        if ($valid && !self::calculaDigitos($inscricao_estadual)) {
             $valid = false;
         }
         return $valid;

@@ -28,10 +28,10 @@ class Acre implements ValidadorInteface
         if (strlen($inscricao_estadual) != 13) {
             $valid = false;
         }
-        if (substr($inscricao_estadual, 0, 2) != '01') {
+        if ($valid && substr($inscricao_estadual, 0, 2) != '01') {
             $valid = false;
         }
-        if (!$valid || !self::calculaDigitos($inscricao_estadual)) {
+        if ($valid && !self::calculaDigitos($inscricao_estadual)) {
             $valid = false;
         }
         return $valid;

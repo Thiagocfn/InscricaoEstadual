@@ -20,10 +20,10 @@ class MatoGrossoDoSul extends Ceara
         if (strlen($inscricao_estadual) != 9) {
             $valid = false;
         }
-        if (substr($inscricao_estadual, 0, 2) != '28') {
+        if ($valid && substr($inscricao_estadual, 0, 2) != '28') {
             $valid = false;
         }
-        if (!$valid || !self::calculaDigito($inscricao_estadual)) {
+        if ($valid && !self::calculaDigito($inscricao_estadual)) {
             $valid = false;
         }
         return $valid;

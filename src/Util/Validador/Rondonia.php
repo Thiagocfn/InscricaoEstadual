@@ -22,7 +22,7 @@ class Rondonia implements ValidadorInteface
         if (strlen($inscricao_estadual) != 14) {
             $valid = false;
         }
-        if (!$valid || !self::calculaDigito($inscricao_estadual)) {
+        if ($valid && !self::calculaDigito($inscricao_estadual)) {
             $valid = false;
         }
         return $valid;

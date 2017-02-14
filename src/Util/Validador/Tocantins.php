@@ -29,7 +29,7 @@ class Tocantins extends Ceara
             $corpo = substr_replace($inscricao_estadual, '', 2, 2);
         }
 
-        if (!$valid || !self::calculaDigito($corpo)) {
+        if ($valid && !self::calculaDigito($corpo)) {
             $valid = false;
         }
         return $valid;

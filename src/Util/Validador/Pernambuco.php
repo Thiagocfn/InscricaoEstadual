@@ -21,7 +21,7 @@ class Pernambuco implements ValidadorInteface
         if (strlen($inscricao_estadual) !== 9) {
             $valid = false;
         }
-        if (!$valid || !self::calculaDigitos($inscricao_estadual)) {
+        if ($valid && !self::calculaDigitos($inscricao_estadual)) {
             $valid = false;
         }
         return $valid;

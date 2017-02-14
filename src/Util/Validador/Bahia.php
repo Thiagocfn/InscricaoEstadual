@@ -26,7 +26,7 @@ class Bahia implements ValidadorInteface
         if ($length !== 9 && $length !== 8) {
             $valid = false;
         }
-        if (!$valid || !self::calculaDigitos($inscricao_estadual)) {
+        if ($valid && !self::calculaDigitos($inscricao_estadual)) {
             $valid = false;
         }
         return $valid;

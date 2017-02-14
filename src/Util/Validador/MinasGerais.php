@@ -22,7 +22,7 @@ class MinasGerais implements ValidadorInteface
         if (strlen($inscricao_estadual) != 13) {
             $valid = false;
         }
-        if (!$valid || !self::calculaDigito($inscricao_estadual)) {
+        if ($valid && !self::calculaDigito($inscricao_estadual)) {
             $valid = false;
         }
         return $valid;

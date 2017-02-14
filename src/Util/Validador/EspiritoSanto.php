@@ -20,7 +20,7 @@ class EspiritoSanto extends Ceara
         if (strlen($inscricao_estadual) != 9) {
             $valid = false;
         }
-        if (!$valid || !self::calculaDigito($inscricao_estadual)) {
+        if ($valid && !self::calculaDigito($inscricao_estadual)) {
             $valid = false;
         }
         return $valid;

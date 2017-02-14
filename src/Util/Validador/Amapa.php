@@ -22,10 +22,10 @@ class Amapa implements ValidadorInteface
         if (strlen($inscricao_estadual) != 9) {
             $valid = false;
         }
-        if (substr($inscricao_estadual, 0, 2) != '03') {
+        if ($valid && substr($inscricao_estadual, 0, 2) != '03') {
             $valid = false;
         }
-        if (!self::calculaDigito($inscricao_estadual)) {
+        if ($valid && !self::calculaDigito($inscricao_estadual)) {
             $valid = false;
         }
         return $valid;

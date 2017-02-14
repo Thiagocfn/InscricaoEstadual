@@ -23,10 +23,10 @@ class RioGrandeDoNorte implements ValidadorInteface
         if ($length != 9 && $length != 10) {
             $valid = false;
         }
-        if (substr($inscricao_estadual, 0, 2) != '20') {
+        if ($valid && substr($inscricao_estadual, 0, 2) != '20') {
             $valid = false;
         }
-        if (!$valid || !self::calculaDigito($inscricao_estadual)) {
+        if ($valid && !self::calculaDigito($inscricao_estadual)) {
             $valid = false;
         }
         return $valid;
