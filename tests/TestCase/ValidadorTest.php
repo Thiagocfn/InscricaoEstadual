@@ -127,6 +127,15 @@ class ValidadorTest extends TestCase
         self::assertTrue(Validador::check(Estados::BA, "100000306"), "Bahia. 9 digitos, mod 10 falhou");
         //// mod 11
         self::assertTrue(Validador::check(Estados::BA, "778514741"), "Bahia. 9 digitos, mod 11 falhou");
+        // Casos que reproduziam bugs
+        //// 9 digitos começando com 0
+        self::assertTrue(Validador::check(Estados::BA, "078771760"), "Bahia. 9 digitos");
+        self::assertTrue(Validador::check(Estados::BA, "039474751"), "Bahia. 9 digitos");
+        self::assertTrue(Validador::check(Estados::BA, "090529323"), "Bahia. 9 digitos");
+        //// 8 digitos começando com 0
+        self::assertTrue(Validador::check(Estados::BA, "04772253"), "Bahia. 8 digitos");
+
+
     }
 
     public function testBahiaFalse()

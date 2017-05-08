@@ -45,44 +45,17 @@ class Bahia implements ValidadorInteface
 
         $length = strlen($inscricao_estadual);
         $corpo = substr($inscricao_estadual, 0, $length - 2);
-
+        $modulo = self::getModulo($inscricao_estadual);
         // Calculando o segundo dígito
-        $_2dig = self::calculaDigito($corpo);
+        $_2dig = self::calculaDigito($corpo, $modulo);
         //adicionando o segundo dígito no corpo para calcular o primeiro dígito
-        $_1dig = self::calculaDigito($corpo . $_2dig);
+        $_1dig = self::calculaDigito($corpo . $_2dig, $modulo);
 
         $pos2dig = strlen($inscricao_estadual) - 1;
 
         $pos1dig = strlen($inscricao_estadual) - 2;
 
         return $inscricao_estadual[$pos1dig] == $_1dig && $inscricao_estadual[$pos2dig] == $_2dig;
-    }
-
-    /**
-     * Informa o digito para o corpo passado
-     * @param $corpo
-     * @return int dígito
-     */
-    private static function calculaDigito($corpo)
-    {
-        $peso = strlen($corpo) + 1;
-
-        $soma = 0;
-        foreach (str_split($corpo) as $digito) {
-            $soma += $digito * $peso;
-            $peso--;
-        }
-
-        $modulo = self::getModulo($corpo);
-
-        $resto = $soma % $modulo;
-
-        $dig = $modulo - $resto;
-        if ($dig >= 10) {
-            $dig = 0;
-        }
-
-        return $dig;
     }
 
     /**
@@ -93,9 +66,45 @@ class Bahia implements ValidadorInteface
      */
     private static function getModulo($inscricao_estadual)
     {
-        if (in_array(substr($inscricao_estadual, 0, 1), [0, 1, 2, 3, 4, 5, 8], false)) {
+        $comprimento = strlen($inscricao_estadual);
+        // se for de 8 digitos devo analisar o primeiro digito
+        $posicao = 0;
+        // caso contrário analiso o segundo digito
+        if ($comprimento == 9) {
+            $posicao = 1;
+        }
+        $char = substr($inscricao_estadual, $posicao, 1);
+
+        //para verificar qual módulo deve ser usado, com base na documentação.
+        if (in_array($char, [0, 1, 2, 3, 4, 5, 8], false)) {
             return 10;
         }
         return 11;
+    }
+
+    /**
+     * Informa o digito para o corpo passado
+     * @param $corpo
+     * @param $modulo
+     * @return int dígito
+     */
+    private static function calculaDigito($corpo, $modulo)
+    {
+        $peso = strlen($corpo) + 1;
+
+        $soma = 0;
+        foreach (str_split($corpo) as $digito) {
+            $soma += $digito * $peso;
+            $peso--;
+        }
+
+        $resto = $soma % $modulo;
+
+        $dig = $modulo - $resto;
+        if ($dig >= 10) {
+            $dig = 0;
+        }
+
+        return $dig;
     }
 }
