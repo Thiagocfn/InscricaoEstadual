@@ -172,7 +172,7 @@ class ValidadorTest extends TestCase
     public function testDistritoFederal()
     {
         // Regra convencional
-        //self::assertTrue(Validador::check(Estados::DF, "0754002000176"));
+        self::assertTrue(Validador::check(Estados::DF, "0754002000176"));
 
         // Digito 10 que é convertido para 0
         self::assertTrue(Validador::check(Estados::DF, "0754002000508"));
@@ -186,6 +186,8 @@ class ValidadorTest extends TestCase
 
         // Não tem 13 dígitos
         self::assertFalse(Validador::check(Estados::DF, "07008368143094"));
+        //Digito incorreto
+        self::assertFalse(Validador::check(Estados::DF, "0754002000175"));
     }
 
     public function testEspiritoSanto()
@@ -533,12 +535,18 @@ class ValidadorTest extends TestCase
 
     public function testTocantins()
     {
-        // Regra convencional
+        // Regra convencional Antiga
         self::assertTrue(Validador::check(Estados::TO, "01027737427"));
+
+        // Regra nova (junho de 2003)*
+        static::assertTrue(Validador::check(Estados::TO, "294467696"));
+        // digito zero
+        static::assertTrue(Validador::check(Estados::TO,"294150870"));
     }
 
     public function testTocantinsFalse()
     {
+        ////Regra Antiga
         // Categoria invalida (dígito "correto")
         self::assertFalse(Validador::check(Estados::TO, "01047737427"));
 
@@ -547,5 +555,9 @@ class ValidadorTest extends TestCase
 
         // Dígito verificador incorreto
         self::assertFalse(Validador::check(Estados::TO, "99999916598"));
+
+        //// Regra Nova
+        // Digito verificador incorreto
+        static::assertFalse(Validador::check(Estados::TO, "294467690"));
     }
 }
