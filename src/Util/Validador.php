@@ -50,6 +50,12 @@ class Validador
      */
     public static function check($estado, $inscricao_estadual)
     {
+        //Transforma a sigla para maiúsculo
+        $estado = strtoupper($estado);
+        
+        //Remove a máscara da inscrição deixando apenas os números
+        $inscricao_estadual = preg_replace( '/[^0-9]/', '', $inscricao_estadual);
+        
         switch ($estado) {
             case Estados::AC:
                 $valid = Acre::check($inscricao_estadual);
